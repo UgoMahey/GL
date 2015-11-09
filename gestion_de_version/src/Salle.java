@@ -9,6 +9,7 @@ public class Salle {
 	private int no_salle;
 	private int no_bat;
 	private int superficie;
+	
 	private TypeSalle typeSalle;
 	private Vector<Materiel> listeMateriel;
 	
@@ -26,6 +27,14 @@ public class Salle {
 		listeMateriel.add(m);
 	}
 	*/
+	
+	public TypeSalle getTypeSalle() {
+		return typeSalle;
+	}
+
+	public void setTypeSalle(TypeSalle typeSalle) {
+		this.typeSalle = typeSalle;
+	}
 	
 	public Vector<Materiel> getListeMateriel() {
 		return listeMateriel;
