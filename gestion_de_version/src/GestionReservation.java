@@ -38,15 +38,15 @@ public final class GestionReservation {
 		
 	}
 	/**
-	 * 
-	 * @param demand 
-	 * @param salle
-	 * @param manif
-	 * @param duree
-	 * @param mater
+	 * Méthode qui calcul le prix d'une reservation spécifique celon les différents paramètre passés en paramètre
+	 * @param demand Demandeur qui souhaite calculer le prix d'une reservation 
+	 * @param salle Salle qui le demandeur choisis 
+	 * @param manif Type de manifestation
+	 * @param duree Duree de la manifestation
+	 * @param mater Matériel utilisé 
 	 * @return un float représentant le prix d'une reservation en fonction des paramètres passés en entré
 	 */
-	private static float calculPrixReserv(Demandeur demand,Salle salle,Manifestation manif, Duree duree,Materiel mater){
+	public static float calculPrixReserv(Demandeur demand,Salle salle,Manifestation manif, Duree duree,Materiel mater){
 		
 		return 42;
 	}
@@ -64,12 +64,12 @@ public final class GestionReservation {
 	
 	
 	/**
-	 * 
-	 * @param demand
-	 * @param salle
-	 * @param manif
-	 * @param duree
-	 * @param mater
+	 * Méthode qui reserve une salle pour une date et un demandeur passé en paramètre
+	 * @param demand Demandeur qui souhaite effectuer une reservation
+	 * @param salle Salle qui le demandeur souhaite reserver
+	 * @param manif type de manifestation
+	 * @param duree Duree de la reservation
+	 * @param mater Matériel utilisé
 	 * @return une nouvelle reservation si les différentes contraintes ont été respectées et null avec un message d'erreur sinon
 	 */
 	public static Reservation reserveSalle(Demandeur demand,Salle salle,Manifestation manif, Duree duree,Materiel mater){
@@ -87,7 +87,7 @@ public final class GestionReservation {
 	
 	
 	public void ConsultationReserv(int idReserv){
-		for (Reservation reserv: this.listeReserv){
+		for (Reservation reserv: listeReserv){
 			if(reserv.getNoReserve()==idReserv){
 				reserv.Affiche();
 				break;
@@ -105,7 +105,7 @@ public final class GestionReservation {
 	}
 	
 	public void ConsultationReserv(Date d){
-		for (Reservation reserv: this.listeReserv){
+		for (Reservation reserv: listeReserv){
 			if(reserv.getDate() == d){
 				
 			}
@@ -113,14 +113,19 @@ public final class GestionReservation {
 	}
 	
 	public void ConsultationReserv(Salle s){
-		for (Reservation reserv: this.listeReserv){
+		for (Reservation reserv: listeReserv){
 			if (reserv.getSalle() == s){
 				reserv.Affiche();
 			}
 		}
 	}
 	
-	public void AnnulationReserv(Demandeur d){
+	
+	
+	public void AnnulationReserv(Demandeur d, Reservation r){
+		if(!listeReserv.remove(r)){
+			System.out.println("Problème: ce n'est pas votre reservation");
+		}
 		
 	}
 	
